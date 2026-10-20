@@ -1,0 +1,87 @@
+.work-header,
+.extra-header {
+  text-align: center;
+  font-size: 2rem;
+  margin: 3rem 0 2rem 0;
+  font-family: "mic-32-new", sans-serif;
+  color: #2B3A67;
+}
+
+.extra-header {
+  margin: 6rem 0 4rem 0;
+}
+
+.work-grid,
+.extra-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto 4rem;
+  padding: 0 1rem;
+}
+
+.job {
+  background-color: #66999B;
+  padding: 2rem;
+  border-radius: 12px;
+  color: white;
+}
+
+.job h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.25rem;
+  font-family: "mic-32-new", sans-serif;
+  color: #FFC482;
+}
+
+.job .location {
+  font-weight: normal;
+  font-size: 1rem;
+  color: #FCE6D3;
+}
+
+.job .date {
+  font-style: italic;
+  color: #FCE6D3;
+  margin-bottom: 0.5rem;
+  font-family: "dashiell-bright", serif;
+}
+
+.job h4 {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+  font-family: "mic-32-new", sans-serif;
+  color: #ffffff;
+}
+
+.job ul {
+  list-style: disc;
+  margin: 0.5rem 0 0 1.5rem;
+  line-height: 1.6;
+  font-family: "dashiell-bright", serif;
+}
+
+.job li {
+  margin-bottom: 0.3rem;
+  color: #ffffff;
+}
+
+.extra {
+  background-color: #496A81;
+  padding: 2rem;
+  border-radius: 12px;
+  color: white;
+}
+
+.extra ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  line-height: 1.6;
+  font-family: "dashiell-bright", serif;
+}
+
+.extra li {
+  margin-bottom: 0.5rem;
+  color: white;
+}

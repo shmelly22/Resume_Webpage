@@ -1,0 +1,67 @@
+.education-header {
+  text-align: center;
+  font-size: 2rem;
+  margin: 3rem 0 2rem 0;
+  font-family: "mic-32-new", sans-serif;
+  color: #2B3A67;
+}
+
+.education-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto 4rem;
+  padding: 0 1rem;
+}
+
+.edu {
+  background-color: #66999B;
+  padding: 2rem;
+  border-radius: 12px;
+  color: white;
+}
+
+.edu h2 {
+  font-family: "mic-32-new", sans-serif;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #FFC482;
+}
+
+.edu h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.25rem;
+}
+
+.edu .location {
+  font-weight: normal;
+  font-size: 1rem;
+  color: #B3AF8F;
+}
+
+.edu .date {
+  font-style: italic;
+  color: #FCE6D3;
+  margin-bottom: 0.5rem;
+  font-family: "dashiell-bright", serif;
+}
+
+.edu h4 {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+  font-family: "mic-32-new", sans-serif;
+  color: #FFFFFF;
+}
+
+.edu ul {
+  list-style: disc;
+  margin: 0.5rem 0 0 1.5rem;
+  line-height: 1.6;
+  font-family: "dashiell-bright", serif;
+}
+
+.edu li {
+  margin-bottom: 0.3rem;
+  color: #FFFFFF;
+}

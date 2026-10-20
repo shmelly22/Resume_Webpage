@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio - Projects</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="projects.css">
+  <link rel="stylesheet" href="https://use.typekit.net/apd4tfz.css">
+</head>
+<body>
+  <header>
+    <h1>Samuel Muroff</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="About.html">About</a></li>
+        <li><a href="Education.html">Education</a></li>
+        <li><a href="Projects.html" aria-current="page">Projects</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="projects">
+      <h2 class="projects-header">Projects</h2>
+      <p class="projects-intro">Here are two projects from my Information Science classes. One focuses on working with databases using SQL, and the other uses Power BI to turn sales data into easy-to-read visuals.</p>
+
+      <section class="project-section" id="sql-project">
+        <h2>INFO 3401: SQL</h2>
+        <p class="project-description">These SQL queries use joins, filters, grouping, and subqueries to answer questions about sales and customers. They go beyond basic SELECT statements while staying easy to follow.</p>
+        <div class="sql-grid">
+          <div class="sql-card">
+            <h3>Which categories sell the most in U.S. stores?</h3>
+            <pre><code>SELECT TRIM(p.CategoryName) AS Category,
+       SUM(s.Quantity) AS UnitsSold,
+       COUNT(DISTINCT s.OrderKey) AS Orders
+FROM factSales AS s
+JOIN dimProduct AS p
+  ON s.ProductKey = p.ProductKey
+JOIN dimStore AS st
+  ON s.StoreKey = st.StoreKey
+WHERE st.CountryCode = 'US'
+GROUP BY TRIM(p.CategoryName)
+HAVING COUNT(DISTINCT s.OrderKey) >= 20
+ORDER BY UnitsSold DESC
+LIMIT 5</code></pre>
+            <p>I joined three tables and filtered for U.S. stores. Then I counted units and unique orders by category, kept categories with at least 20 orders, and found the top five.</p>
+          </div>
+          <div class="sql-card">
+            <h3>Which frequent customers buy the widest variety?</h3>
+            <pre><code>WITH CustomerOrders AS (
+  SELECT CustomerKey,
+         COUNT(DISTINCT OrderKey) AS Orders,
+         COUNT(DISTINCT ProductKey) AS Products
+  FROM factSales
+  GROUP BY CustomerKey
+)
+SELECT c.GivenName, c.Surname,
+       co.Orders, co.Products
+FROM CustomerOrders AS co
+JOIN dimCustomer AS c
+  ON co.CustomerKey = c.CustomerKey
+WHERE co.Orders > (
+  SELECT AVG(Orders) FROM CustomerOrders
+)
+ORDER BY co.Products DESC, co.Orders DESC
+LIMIT 10</code></pre>
+            <p>I used a CTE to count each customer's orders and different products. A subquery finds the average number of orders, so I can rank customers who order more often by how many products they have tried.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="project-section" id="powerbi-project">
+        <h2>INFO 3402: Power BI</h2>
+        <p class="project-description">For this project, I am creating ten report pages with the same set of sales data. I use the reports to explore products, stores, customers, and changes in sales over time.</p>
+        <div class="report-grid">
+          <div class="report-card">
+            <h3>01. How the four tables connect</h3>
+            <p>The sales table holds each transaction. The product, customer, and store tables add details about what was sold, who bought it, and where it was sold.</p>
+            <p class="schema-description"><strong>The tables:</strong> factSales (transactions), dimProduct (product information), dimCustomer (customer information), and dimStore (store information).</p>
+            <figure>
+              <img src="screenshots/01-star-schema.png" alt="Report 01: Star Schema" loading="lazy">
+              <figcaption>Power BI report 01: Star Schema</figcaption>
+            </figure>
+          </div>
+          <div class="report-card">
+            <h3>02. Top-selling products by volume</h3>
+            <p>This chart shows which products sold the most units. Comparing products within their category makes the results easier to understand.</p>
+            <figure>
+              <img src="screenshots/02-product-volume.png" alt="Report 02: Product Volume" loading="lazy">
+              <figcaption>Power BI report 02: Product Volume</figcaption>
+            </figure>
+          </div>
+          <div class="report-card">
+            <h3>03. Top-selling products by revenue</h3>
+            <p>This chart focuses on total sales revenue instead of the number of products sold.</p>
+            <figure>
+              <img src="screenshots/03-product-revenue.png" alt="Report 03: Product Revenue" loading="lazy">
+              <figcaption>Power BI report 03: Product Revenue</figcaption>
+            </figure>
+          </div>
+          <div class="report-card">
+            <h3>04. Top-selling stores by revenue</h3>
+            <p>This view compares sales across stores, with online sales considered separately so physical stores are easier to compare.</p>
+            <figure>
+              <img src="screenshots/04-store-revenue.png" alt="Report 04: Store Revenue" loading="lazy">
+              <figcaption>Power BI report 04: Store Revenue</figcaption>
+            </figure>
+          </div>
+          <div class="report-card">
+            <h3>05. Most profitable product categories</h3>
+            <p>This chart compares the profit made by different product categories after product costs.</p>
+            <figure>
+              <img src="screenshots/05-category-profit.png" alt="Report 05: Category Profit" loading="lazy">
+              <figcaption>Power BI report 05: Category Profit</figcaption>
+            </figure>
+          </div>
+          <div class="report-card">
+            <h3>06. Repeat customers and their purchases</h3>
+            <p>This report looks at customers who placed multiple orders and shows what they purchased.</p>
+            <figure>
+              <img src="screenshots/06-repeat-customers.png" alt="Report 06: Repeat Customers" loading="lazy">
+              <figcaption>Power BI report 06: Repeat Customers</figcaption>
+            </figure>
+          </div>
+          <div class="report-card">
+            <h3>07. Online order delivery times</h3>
+            <p>This view shows the number of days between an online order and its delivery.</p>
+            <figure>
+              <img src="screenshots/07-delivery-time.png" alt="Report 07: Delivery Time" loading="lazy">
+              <figcaption>Power BI report 07: Delivery Time</figcaption>
+            </figure>
+          </div>
+          <div class="report-card">
+            <h3>08. Sales and profit from 2021–2024</h3>
+            <p>A monthly view helps show how sales and profit changed over time.</p>
+            <figure>
+              <img src="screenshots/08-sales-trends.png" alt="Report 08: Monthly Trends" loading="lazy">
+              <figcaption>Power BI report 08: Monthly Trends</figcaption>
+            </figure>
+          </div>
+          <div class="report-card">
+            <h3>09. Spending by age group</h3>
+            <p>This report compares spending across age groups and the types of products each group purchases.</p>
+            <figure>
+              <img src="screenshots/09-age-groups.png" alt="Report 09: Age Groups" loading="lazy">
+              <figcaption>Power BI report 09: Age Groups</figcaption>
+            </figure>
+          </div>
+          <div class="report-card">
+            <h3>10. Spending by gender and location</h3>
+            <p>This view compares customer spending by gender and shows where those customers live.</p>
+            <figure>
+              <img src="screenshots/10-gender-location.png" alt="Report 10: Gender Location" loading="lazy">
+              <figcaption>Power BI report 10: Gender Location</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2004 Sammy Muroff</p>
+  </footer>
+</body>
+</html>
