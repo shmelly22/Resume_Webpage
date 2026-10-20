@@ -1,0 +1,126 @@
+.projects-header {
+  text-align: center;
+  font-size: 2rem;
+  margin: 3rem 0 2rem 0;
+  font-family: "mic-32-new", sans-serif;
+  color: #2B3A67;
+}
+
+.projects-intro {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  text-align: center;
+  line-height: 1.7;
+  color: #496A81;
+}
+
+.project-section {
+  max-width: 1000px;
+  margin: 0 auto 4rem;
+}
+
+.project-section > h2 {
+  font-size: 1.8rem;
+  margin: 0 0 0.75rem;
+  text-align: center;
+}
+
+.project-description {
+  max-width: 750px;
+  margin: 0 auto 2rem;
+  text-align: center;
+  line-height: 1.7;
+  color: #496A81;
+}
+
+.sql-grid,
+.report-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.sql-card,
+.report-card {
+  background-color: #66999B;
+  color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  min-width: 0;
+}
+
+.sql-card h3,
+.report-card h3 {
+  margin: 0 0 1rem;
+  color: #FFC482;
+  font-family: "mic-32-new", sans-serif;
+  font-size: 1.3rem;
+  line-height: 1.4;
+}
+
+.sql-card p,
+.report-card p {
+  margin: 0 0 1.25rem;
+  font-family: "dashiell-bright", serif;
+  line-height: 1.6;
+  color: white;
+}
+
+.sql-card p:last-child,
+.report-card p:last-child {
+  margin-bottom: 0;
+}
+
+.sql-card pre {
+  padding: 1rem;
+  overflow-x: auto;
+  background-color: #496A81;
+  border-radius: 6px;
+  font: 0.83rem/1.6 "Courier New", monospace;
+  color: white;
+}
+
+.sql-card code {
+  font: inherit;
+}
+
+.report-card figure {
+  margin: 1.5rem 0 0;
+}
+
+.report-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  border-radius: 6px;
+  background-color: #FCE6D3;
+}
+
+.report-card figcaption {
+  text-align: center;
+  color: #FCE6D3;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.schema-description {
+  margin-top: 1rem;
+}
+
+@media (max-width: 760px) {
+  .sql-grid,
+  .report-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sql-card,
+  .report-card {
+    padding: 1.4rem;
+  }
+
+  .projects-header {
+    margin-top: 3.5rem;
+  }
+}
